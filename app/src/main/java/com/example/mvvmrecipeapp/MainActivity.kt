@@ -3,12 +3,11 @@ package com.example.mvvmrecipeapp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.Button
 import androidx.compose.material.Text
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -24,10 +23,43 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContent {
+//        setContent {
+//            Column {
+//                Column(
+//                    modifier = Modifier
+//                        .fillMaxWidth()
+//                        .height(200.dp)
+//                        .border(border = BorderStroke(width = 1.dp, color = Color.Black)),
+//                    verticalArrangement = Arrangement.SpaceEvenly
+//                ) {
+//                    Text(
+//                        text = "ITEM1",
+//                        modifier = Modifier.align(Alignment.CenterHorizontally)
+//                    )
+//                    Text(
+//                        text = "ITEM2",
+//                        modifier = Modifier.align(Alignment.CenterHorizontally)
+//                    )
+//                }
+//                Row(
+//                    modifier = Modifier.width(200.dp)
+//                        .height(200.dp)
+//                        .border(border = BorderStroke(width = 1.dp, color = Color.Black)),
+//                    horizontalArrangement = Arrangement.Center
+//                ) {
+//                    Text(
+//                        text = "ITEM2",
+//                        modifier = Modifier.align(Alignment.CenterVertically)
+//                    )
+//                }
+//            }
+//        }
 
+
+        setContent {
             Column(
-                modifier = Modifier.fillMaxSize()
+                modifier = Modifier
+                    .fillMaxSize()
                     .verticalScroll(rememberScrollState())
                     .background(color = Color(0xfff2f2f2)),
             ) {
@@ -40,20 +72,34 @@ class MainActivity : AppCompatActivity() {
                 Column(
                     Modifier.padding(16.dp)
                 ) {
-                     Text(
-                         text = "Happy Meal",
-                         fontSize = 26.sp
-                     )
+                    Row (
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween
+                    ){
+                        Text(
+                            text = "Happy Meal",
+                            fontSize = 26.sp
+                        )
+                        Text(
+                            text = "$5.99",
+                            color = Color(0xFF85bb65),
+                            fontSize = 17.sp,
+                            modifier = Modifier.align(Alignment.CenterVertically)
+                        )
+                    }
                      Spacer(modifier = Modifier.padding(top = 10.dp))
                     Text(
                         text = "800 Calories",
                         fontSize = 17.sp)
                     Spacer(modifier = Modifier.padding(top = 10.dp))
-                    Text(
-                        text = "$5.99",
-                        color = Color.Green,
-                        fontSize = 17.sp
-                    )
+                    Button(
+                            onClick = { /*TODO*/ },
+                            modifier = Modifier.align(Alignment.CenterHorizontally)
+                        ) {
+                            Text(text = "ORDER NOW")
+                        }
+
+
                 }
             }
 
