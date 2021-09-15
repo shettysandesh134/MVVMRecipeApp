@@ -14,26 +14,26 @@ class RecipeNetworkEntity(
     var publisher: String? = null,
 
     @SerializedName("featured_image")
-    var featured_image: String? = null,
+    var featuredImage: String? = null,
 
     @SerializedName("rating")
     var rating: Int? = null,
 
     @SerializedName("source_url")
-    var source_url: String? = null,
+    var sourceUrl: String? = null,
 
     @SerializedName("description")
     var description: String? = null,
 
     @SerializedName("cooking_instructions")
-    var cooking_instructions: String? = null,
+    var cookingInstructions: String? = null,
 
     @SerializedName("ingredients")
     var ingredients: List<String>? = null,
 
     @SerializedName("date_added")
-    var date_added: String? = null,
+    var dateAdded: String? = null,
 
     @SerializedName("date_updated")
-    var date_updated: String? = null
+    var dateUpdated: String? = null
 )
