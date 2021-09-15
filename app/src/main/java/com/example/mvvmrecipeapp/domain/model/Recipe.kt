@@ -4,7 +4,7 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-class Recipe(
+data class Recipe(
     val id: Int? = null,
     val title: String? = null,
     val publisher: String? = null,
