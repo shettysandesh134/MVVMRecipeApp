@@ -1,7 +1,9 @@
 package com.example.mvvmrecipeapp.presentation.ui.recipe_list
 
+import android.graphics.Bitmap
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.mvvmrecipeapp.domain.model.Recipe
@@ -21,6 +23,8 @@ constructor(
 
    val recipes: MutableState<List<Recipe>> = mutableStateOf(listOf())
 
+    val query = mutableStateOf("chicken")
+
     init {
        newSearch()
     }
@@ -34,6 +38,10 @@ constructor(
             )
             recipes.value = result
         }
+    }
+
+    fun onQueryChanged(query: String) {
+        this.query.value = query
     }
 
 }

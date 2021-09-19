@@ -41,7 +41,7 @@ fun RecipeCard(
         Column {
             recipe.featuredImage?.let { url ->
 
-                val image = loadPicture(url = url, defaultImage = DEFAULT_RECIPE_IMAGE).value
+                val image = loadPicture(url = url, defaultImage = DEFAULT_RECIPE_IMAGE,recipe.id).value
 
                 image?.let { img->
                     Image(
