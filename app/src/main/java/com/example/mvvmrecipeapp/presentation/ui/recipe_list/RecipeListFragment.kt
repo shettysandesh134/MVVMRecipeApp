@@ -1,6 +1,7 @@
 package com.example.mvvmrecipeapp.presentation.ui.recipe_list
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,6 +18,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import com.example.mvvmrecipeapp.R
+import com.example.mvvmrecipeapp.util.TAG
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -38,10 +40,7 @@ class RecipeListFragment: Fragment() {
 
     val viewModel: RecipeListViewModel by viewModels()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        println("RecipeListFragment: ${viewModel}")
-    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -50,6 +49,13 @@ class RecipeListFragment: Fragment() {
     ): View {
         return ComposeView(requireContext()).apply {
             setContent {
+
+                val recipes = viewModel.recipes.value
+
+                recipes.map {
+                    Log.d(TAG, "onCreateView: ${it.title}")
+                }
+
                 Column(modifier = Modifier.padding(16.dp)) {
                     Text(
                         text = "Recipe List",
