@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity() {
 //            )
 //            Log.d("MainActivity","onCreate: ${recipe.title}")
 //        }
+        /*End of Retrofit Service*/
 
     }
     

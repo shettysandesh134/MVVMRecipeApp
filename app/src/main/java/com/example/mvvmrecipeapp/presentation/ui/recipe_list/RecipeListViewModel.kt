@@ -2,8 +2,6 @@ package com.example.mvvmrecipeapp.presentation.ui.recipe_list
 
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.mvvmrecipeapp.domain.model.Recipe
@@ -24,6 +22,10 @@ constructor(
    val recipes: MutableState<List<Recipe>> = mutableStateOf(listOf())
 
     init {
+       newSearch()
+    }
+
+    fun newSearch(){
         viewModelScope.launch {
             val result = repository.search(
                 token = token,
