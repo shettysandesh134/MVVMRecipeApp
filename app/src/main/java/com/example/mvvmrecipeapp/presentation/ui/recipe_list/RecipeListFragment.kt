@@ -4,10 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.itemsIndexed
@@ -30,6 +27,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.example.mvvmrecipeapp.presentation.components.CircularIndeterminateProgressBar
 import com.example.mvvmrecipeapp.presentation.components.FoodCategoryChip
 import com.example.mvvmrecipeapp.presentation.components.RecipeCard
 import com.example.mvvmrecipeapp.presentation.components.SearchAppBar
@@ -71,6 +69,7 @@ class RecipeListFragment: Fragment() {
                 val selectedCategory = viewModel.selectedCategory.value
                 val scope = rememberCoroutineScope()
                 val scrollState = rememberLazyListState()
+                val loading = viewModel.loading.value   // boolean for when to display indicator
 
                 Column {
 
@@ -88,16 +87,23 @@ class RecipeListFragment: Fragment() {
                         onChangeHorizontalScrollPosition = viewModel :: onChangeHorizontalScrollPosition
                     )
 
-                    LazyColumn(
-                        modifier = Modifier
-                            .padding(start = 8.dp, end = 8.dp)
+                    Box (  // it overlays all its childrens
+                        modifier = Modifier.fillMaxSize()
                     ){
-                        itemsIndexed(
-                            items = recipes
-                        ){ index, recipe ->
-                            RecipeCard(recipe = recipe, onClick = {})
+
+                        LazyColumn(
+                            modifier = Modifier
+                                .padding(start = 8.dp, end = 8.dp)
+                        ){
+                            itemsIndexed(
+                                items = recipes
+                            ){ index, recipe ->
+                                RecipeCard(recipe = recipe, onClick = {})
+                            }
                         }
+                        CircularIndeterminateProgressBar(isDisplayed = loading)
                     }
+
                 }
 
             }
