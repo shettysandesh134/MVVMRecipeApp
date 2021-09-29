@@ -37,7 +37,6 @@ fun CircularIndeterminateProgressBar(
                     end.linkTo(parent.end)
                 }
             )
-
         }
     }
 }

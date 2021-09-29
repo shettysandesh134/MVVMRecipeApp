@@ -27,10 +27,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.example.mvvmrecipeapp.presentation.components.CircularIndeterminateProgressBar
-import com.example.mvvmrecipeapp.presentation.components.FoodCategoryChip
-import com.example.mvvmrecipeapp.presentation.components.RecipeCard
-import com.example.mvvmrecipeapp.presentation.components.SearchAppBar
+import com.example.mvvmrecipeapp.presentation.components.*
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -87,22 +84,24 @@ class RecipeListFragment: Fragment() {
                         onChangeHorizontalScrollPosition = viewModel :: onChangeHorizontalScrollPosition
                     )
 
-                    Box (  // it overlays all its childrens
-                        modifier = Modifier.fillMaxSize()
-                    ){
+                    PulsingDemo()
 
-                        LazyColumn(
-                            modifier = Modifier
-                                .padding(start = 8.dp, end = 8.dp)
-                        ){
-                            itemsIndexed(
-                                items = recipes
-                            ){ index, recipe ->
-                                RecipeCard(recipe = recipe, onClick = {})
-                            }
-                        }
-                        CircularIndeterminateProgressBar(isDisplayed = loading)
-                    }
+//                    Box (  // it overlays all its childrens
+//                        modifier = Modifier.fillMaxSize()
+//                    ){
+//
+//                        LazyColumn(
+//                            modifier = Modifier
+//                                .padding(start = 8.dp, end = 8.dp)
+//                        ){
+//                            itemsIndexed(
+//                                items = recipes
+//                            ){ index, recipe ->
+//                                RecipeCard(recipe = recipe, onClick = {})
+//                            }
+//                        }
+//                        CircularIndeterminateProgressBar(isDisplayed = loading)
+//                    }
 
                 }
 
