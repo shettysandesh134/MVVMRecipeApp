@@ -57,3 +57,28 @@ fun loadPicture(
 
     return bitmapState
 }
+
+@ExperimentalCoroutinesApi
+@Composable
+fun loadPicture(
+    @DrawableRes defaultImage: Int
+): MutableState<Bitmap?> {
+
+    val bitmapState:  MutableState<Bitmap?> = remember{ mutableStateOf(null) }
+
+    Glide.with(LocalContext.current)
+        .asBitmap()
+        .load(defaultImage)
+        .into(object: CustomTarget<Bitmap>(){
+            override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
+                bitmapState.value = resource
+            }
+
+            override fun onLoadCleared(placeholder: Drawable?) {
+
+            }
+
+        })
+
+    return bitmapState
+}
