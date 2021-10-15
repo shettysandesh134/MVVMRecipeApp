@@ -5,7 +5,7 @@ import android.os.Bundle
 import com.example.mvvmrecipeapp.R
 import dagger.hilt.android.AndroidEntryPoint
 
-//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
+//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
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
