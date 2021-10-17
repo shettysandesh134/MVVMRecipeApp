@@ -2,6 +2,7 @@ package com.example.mvvmrecipeapp.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.core.content.ContextCompat
 import com.example.mvvmrecipeapp.R
 import dagger.hilt.android.AndroidEntryPoint
 
