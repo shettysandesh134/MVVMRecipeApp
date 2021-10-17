@@ -6,7 +6,7 @@ import androidx.core.content.ContextCompat
 import com.example.mvvmrecipeapp.R
 import dagger.hilt.android.AndroidEntryPoint
 
-//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
+//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
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 

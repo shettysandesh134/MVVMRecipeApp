@@ -77,7 +77,7 @@ fun SearchAppBar(
                         onExecuteSearch()
                         focusManager?.clearFocus()
                     }),
-                    textStyle = TextStyle(color = MaterialTheme.colors.onSurface),
+                    textStyle = MaterialTheme.typography.button,
                     colors = TextFieldDefaults.textFieldColors(backgroundColor = MaterialTheme.colors.surface)
 
                 )
