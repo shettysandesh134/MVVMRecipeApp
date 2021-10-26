@@ -1,6 +1,7 @@
 package com.example.mvvmrecipeapp.presentation.ui.recipe_list
 
 import android.graphics.Bitmap
+import android.util.Log
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
@@ -35,7 +36,8 @@ constructor(
     val loading = mutableStateOf(false)
 
     init {
-       newSearch()
+        newSearch()
+
     }
 
     fun newSearch(){
@@ -51,6 +53,7 @@ constructor(
             recipes.value = result
             loading.value = false
         }
+
     }
 
     private fun resetSearchState(){

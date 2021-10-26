@@ -6,14 +6,13 @@ import androidx.core.content.ContextCompat
 import com.example.mvvmrecipeapp.R
 import dagger.hilt.android.AndroidEntryPoint
 
-//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
+//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
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
 
         /* EXAMPLE of Retrofit Service */
 //        val service = Retrofit.Builder()
