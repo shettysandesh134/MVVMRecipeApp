@@ -1,6 +1,7 @@
 package com.example.mvvmrecipeapp.presentation.ui.recipe_list
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -38,6 +39,7 @@ import com.example.mvvmrecipeapp.presentation.BaseApplication
 import com.example.mvvmrecipeapp.presentation.components.*
 import com.example.mvvmrecipeapp.presentation.components.util.SnackbarController
 import com.example.mvvmrecipeapp.presentation.theme.AppTheme
+import com.example.mvvmrecipeapp.util.TAG
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -126,6 +128,8 @@ end snack with snackbarhoststate */
                     val scrollState = rememberLazyListState()
                     val loading = viewModel.loading.value   // boolean for when to display indicator
 
+                    val page = viewModel.page.value
+
                     val scaffoldState = rememberScaffoldState()
 
                     Scaffold(
@@ -174,7 +178,7 @@ end snack with snackbarhoststate */
                                 .background(color = MaterialTheme.colors.background)
                         ){
 
-                            if (loading){
+                            if (loading && recipes.isEmpty()){
                                 ShimmerRecipeCardItem(imageHeight = 250.dp, padding = 8.dp)
                             }else{
                                 LazyColumn(
@@ -184,6 +188,11 @@ end snack with snackbarhoststate */
                                     itemsIndexed(
                                         items = recipes
                                     ){ index, recipe ->
+                                        viewModel.onChangeRecipeScrollPosition(index)
+                                        Log.d(TAG, "nextPage: ${index}${loading}")
+                                        if ((index + 1) >= (page * PAGE_SIZE) && !loading){
+                                            viewModel.nextPage()
+                                        }
                                         RecipeCard(recipe = recipe, onClick = {})
                                     }
                                 }
