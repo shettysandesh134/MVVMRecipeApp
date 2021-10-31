@@ -39,6 +39,7 @@ import com.example.mvvmrecipeapp.presentation.BaseApplication
 import com.example.mvvmrecipeapp.presentation.components.*
 import com.example.mvvmrecipeapp.presentation.components.util.SnackbarController
 import com.example.mvvmrecipeapp.presentation.theme.AppTheme
+import com.example.mvvmrecipeapp.presentation.ui.recipe_list.RecipeListEvent.*
 import com.example.mvvmrecipeapp.util.TAG
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -149,7 +150,7 @@ end snack with snackbarhoststate */
                                         )
                                     }
                                 }else {
-                                    viewModel.newSearch()
+                                    viewModel.onTriggerEvent(NewSearchEvent)
                                 }
                                       }
                                 ,
@@ -191,7 +192,7 @@ end snack with snackbarhoststate */
                                         viewModel.onChangeRecipeScrollPosition(index)
                                         Log.d(TAG, "nextPage: ${index}${loading}")
                                         if ((index + 1) >= (page * PAGE_SIZE) && !loading){
-                                            viewModel.nextPage()
+                                            viewModel.onTriggerEvent(NextPageEvent)
                                         }
                                         RecipeCard(recipe = recipe, onClick = {})
                                     }
