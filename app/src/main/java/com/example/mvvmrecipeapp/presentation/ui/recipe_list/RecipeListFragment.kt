@@ -173,40 +173,18 @@ end snack with snackbarhoststate */
                         }
 
                     ) {
-                        Box (  // it overlays all its childrens
-                            modifier = Modifier
-                                .fillMaxSize()
-                                .background(color = MaterialTheme.colors.background)
-                        ){
-
-                            if (loading && recipes.isEmpty()){
-                                ShimmerRecipeCardItem(imageHeight = 250.dp, padding = 8.dp)
-                            }else{
-                                LazyColumn(
-                                    modifier = Modifier
-                                        .padding(start = 8.dp, end = 8.dp)
-                                ){
-                                    itemsIndexed(
-                                        items = recipes
-                                    ){ index, recipe ->
-                                        viewModel.onChangeRecipeScrollPosition(index)
-                                        Log.d(TAG, "nextPage: ${index}${loading}")
-                                        if ((index + 1) >= (page * PAGE_SIZE) && !loading){
-                                            viewModel.onTriggerEvent(NextPageEvent)
-                                        }
-                                        RecipeCard(recipe = recipe, onClick = {})
-                                    }
-                                }
-                            }
-                            CircularIndeterminateProgressBar(isDisplayed = loading)
-                            DefaultSnackbar(
-                                snackbarHostState = scaffoldState.snackbarHostState,
-                                onDismiss = {
-                                    scaffoldState.snackbarHostState.currentSnackbarData?.dismiss()
-                                },
-                                modifier = Modifier.align(Alignment.BottomCenter)
-                            )
-                        }
+                        RecipeList(
+                            loading = loading,
+                            recipes = recipes,
+                            onChangeRecipeScrollPosition = viewModel::onChangeRecipeScrollPosition,
+                            page = page,
+                            onTriggerEvent = {
+                                viewModel.onTriggerEvent(NextPageEvent)
+                                             },
+                            scaffoldState = scaffoldState,
+                            snackbarController = snacbarController,
+                            navController = findNavController()
+                        )
                     }
                 }
 

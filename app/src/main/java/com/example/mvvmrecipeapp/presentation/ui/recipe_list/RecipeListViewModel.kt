@@ -14,6 +14,7 @@ import com.example.mvvmrecipeapp.presentation.ui.recipe_list.RecipeListEvent.*
 import com.example.mvvmrecipeapp.repository.RecipeRepository
 import com.example.mvvmrecipeapp.util.TAG
 import dagger.assisted.Assisted
+import dagger.assisted.AssistedInject
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -34,7 +35,7 @@ class RecipeListViewModel
 constructor(
     private val repository: RecipeRepository,
     private @Named("auth_token") val token: String,   // to differentiate a particular string(for e.g. "auth_token") in dependency injection
-    @Assisted private val savedStateHandle: SavedStateHandle
+    private val savedStateHandle: SavedStateHandle
 ): ViewModel(){
 
    val recipes: MutableState<List<Recipe>> = mutableStateOf(listOf())

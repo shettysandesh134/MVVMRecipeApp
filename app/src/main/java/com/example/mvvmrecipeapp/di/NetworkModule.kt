@@ -1,5 +1,6 @@
 package com.example.mvvmrecipeapp.di
 
+import androidx.lifecycle.SavedStateHandle
 import com.example.mvvmrecipeapp.network.RecipeService
 import com.example.mvvmrecipeapp.network.model.RecipeDtoMapper
 import com.google.gson.GsonBuilder
@@ -38,5 +39,11 @@ import javax.inject.Singleton
     fun provideAuthToken(): String {
         return "Token 9c8b06d329136da358c2d00e76946b0111ce2c48"
     }
+
+//    @Singleton
+//    @Provides
+//    fun providesavedStateHandle(): SavedStateHandle{
+//        return SavedStateHandle()
+//    }
 
 }
